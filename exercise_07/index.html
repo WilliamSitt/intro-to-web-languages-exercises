@@ -1,0 +1,42 @@
+<body>
+    <input type="text" id="txt-price" placeholder="Enter the price of the item">
+    <input type="text" id="txt-quantity" placeholder="Enter the quanity of the item">
+    <button id="btn-submit">Calculate</button>
+    <div id="output"></div>
+
+    <script>
+        //receives user input for the price of an object
+        var priceInput = document.getElementById('txt-price');
+        //receives user input for the quantity of an object
+        var quantityInput = document.getElementById('txt-quantity');
+        //submits the two user inputs into the function
+        var submitBtn = document.getElementById('btn-submit');
+        //output generated from the function using the user inputs
+        var output = document.getElementById('output');
+
+        //function activates when submit button is clicked
+        submitBtn.addEventListener('click', function () {
+            //stores the user input for price
+            var price = priceInput.value;
+            //stores the user input for quantity
+            var quanity = quantityInput.value;
+            //adds the price variable to itself
+            price = +price;
+            //adds the quantity variable to itself
+            quanity = +quanity;
+            //triggers if the price or quantity variables aren't numbers
+            if (Number.isNaN(price) || Number.isNaN(quanity)) {
+                //variables that stores the string 'Invalid Input'
+                output.innerHTML = 'Invalid input';
+                //outputs the string 'Invalid Input'
+                return;
+            }
+            //stores the product of the price and quantity
+            var totalPrice = price * quanity;
+            //rounds the product of the price and quantity and stores that value
+            totalPrice = Math.round(totalPrice * 100) / 100;
+            //outputs the estimated product of the price and quantity
+            output.innerHTML = quanity + ' items at $' + price + ' each is $' + totalPrice;
+        });
+    </script>
+</body>
